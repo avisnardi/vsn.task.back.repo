@@ -8,8 +8,8 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.vsn.task_manager</groupId>
-	<artifactId>vsn-task-manager</artifactId>
+	<groupId>vsn-tsk</groupId>
+	<artifactId>vsn-tsk-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>vsn-task-manager</name>
 	<description>Demo project for Spring Boot</description>

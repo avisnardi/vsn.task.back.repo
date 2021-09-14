@@ -1,4 +1,4 @@
-package br.com.vsn.task;
+package br.com.vsn.tsk;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
