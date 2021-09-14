@@ -11,8 +11,8 @@
   <artifactId>vsn-tsk</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>br.com.vsn.tsk</name>
-  <description>br.com.vsn.tsk</description>
+  <name>vsn-tsk</name>
+  <description>vsn-tsk</description>
   <modules>
   	<module>vsn-tsk-app</module>
   </modules>
