@@ -1,4 +1,4 @@
-package br.com.vsn.tsk.service.copy;
+package br.com.vsn.tsk.service;
 
 import java.util.Arrays;
 
