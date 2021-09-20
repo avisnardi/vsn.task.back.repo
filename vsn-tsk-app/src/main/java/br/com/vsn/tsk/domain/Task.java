@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Task implements Serializable {
 	
@@ -22,6 +24,7 @@ public class Task implements Serializable {
 	private Integer id;
 	private String name;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private Owner owner;
