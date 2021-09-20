@@ -9,8 +9,11 @@ import org.springframework.context.annotation.Profile;
 import br.com.vsn.tsk.service.DBService;
 
 @Configuration
-@Profile("test")
-public class TesteConfig {
+@Profile("dev")
+public class DevConfig {
+	
+	@Value("${spring.jpa.hibernate.ddl-auto}")
+	private String strategy;
 	
 	@Value("${prop.teste}")
 	private String prop;
@@ -21,6 +24,11 @@ public class TesteConfig {
 	@Bean
 	public void instanciaBaseDeDados() {
 		System.out.println(prop);
+		System.out.println("strategy:" + strategy);
 		this.dbService.instanciaBaseDeDados();
+		if (strategy.equals("create")) {
+//			this.dbService.instanciaBaseDeDados();
+		}
 	}
+
 }
