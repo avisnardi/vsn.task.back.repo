@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.vsn.tsk.domain.Owner;
 import br.com.vsn.tsk.repositories.OwnerRepository;
+import br.com.vsn.tsk.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class OwnerService {
@@ -16,7 +17,7 @@ public class OwnerService {
 	
 	public Owner findById(Integer id) {
 		Optional<Owner> obj =  repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado: id:" + id + " tipo:" + Owner.class.getName()));
 		
 	}
 	
