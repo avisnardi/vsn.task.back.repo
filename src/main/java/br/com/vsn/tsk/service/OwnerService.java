@@ -1,5 +1,6 @@
 package br.com.vsn.tsk.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,8 @@ public class OwnerService {
 		
 	}
 	
+	public List<Owner> findAll() {
+		return repository.findAll();
+		
+	}
 }
