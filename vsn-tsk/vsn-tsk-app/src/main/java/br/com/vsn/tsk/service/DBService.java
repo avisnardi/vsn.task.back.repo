@@ -22,7 +22,9 @@ public class DBService {
 	public void instanciaBaseDeDados() {
 		Owner o1 = new Owner(null, "Alexandre Visnardi");
 		Owner o2 = new Owner(null, "Kelly Cristina dos Santos Visnardi");
-		
+
+		Owner o3 = new Owner(null, "Jacinto Silva");
+
 		Task t1 = new Task(null, "Task 01", o1);
 
 		Task t2 = new Task(null, "Task 02", o1);
@@ -31,7 +33,7 @@ public class DBService {
 
 		o1.getTasks().addAll(Arrays.asList(t1));
 		
-		this.ownerRepository.saveAll(Arrays.asList(o1, o2));
+		this.ownerRepository.saveAll(Arrays.asList(o1, o2, o3));
 		this.taskRepository.saveAll(Arrays.asList(t1, t2, t3));
 	}
 }
