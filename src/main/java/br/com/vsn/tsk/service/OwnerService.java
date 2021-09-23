@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.vsn.tsk.domain.Owner;
+import br.com.vsn.tsk.dtos.OwnerDTO;
 import br.com.vsn.tsk.repositories.OwnerRepository;
 import br.com.vsn.tsk.service.exceptions.ObjectNotFoundException;
 
@@ -29,7 +30,12 @@ public class OwnerService {
 	}
 
 	public Owner create(Owner obj) {
-		// TODO Auto-generated method stub
+		return repository.save(obj);
+	}
+
+	public Owner update(Integer id, OwnerDTO ownerDTO) {
+		Owner obj = findById(id);
+		obj.setName(ownerDTO.getName());
 		return repository.save(obj);
 	}
 }
