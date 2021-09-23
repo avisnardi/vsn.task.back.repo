@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.vsn.tsk.domain.Owner;
@@ -25,5 +26,10 @@ public class OwnerService {
 	public List<Owner> findAll() {
 		return repository.findAll();
 		
+	}
+
+	public Owner create(Owner obj) {
+		// TODO Auto-generated method stub
+		return repository.save(obj);
 	}
 }
