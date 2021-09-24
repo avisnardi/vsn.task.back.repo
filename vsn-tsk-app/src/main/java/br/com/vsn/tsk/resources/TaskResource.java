@@ -13,48 +13,47 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.vsn.tsk.service.TaskService;
 import br.com.vsn.tsk.domain.Owner;
+import br.com.vsn.tsk.domain.Task;
 import br.com.vsn.tsk.dtos.OwnerDTO;
-import br.com.vsn.tsk.service.OwnerService;
+import br.com.vsn.tsk.dtos.TaskDTO;
 
 @RestController
-@RequestMapping(value = "/owners")
-public class OwnerResource {
+@RequestMapping(value = "/tasks")
+public class TaskResource {
 
 	@Autowired
-	OwnerService service;
+	private TaskService service;
 	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<Owner> findById(@PathVariable Integer id) {
-		Owner owner = service.findById(id);
-		return ResponseEntity.ok().body(owner);
-		
+	@GetMapping(value ="/{id}")
+	public ResponseEntity<Task> findById(@PathVariable Integer id) {
+		Task task = service.findById(id);
+		return ResponseEntity.ok().body(task);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<OwnerDTO>> findAll() {
-	    List<Owner> list = service.findAll();
-	    List<OwnerDTO> listDTO = list.stream().map(obj -> new OwnerDTO(obj)).collect(Collectors.toList());
+	public ResponseEntity<List<TaskDTO>> findAll() {
+		List<Task> list = service.findAll();
+		List<TaskDTO> listDTO = list.stream().map(obj -> new TaskDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
-		
 	}
 	
 	@PostMapping
-	public ResponseEntity<Owner> create(@RequestBody Owner obj) {
-		obj.setId(null);
-		obj = service.create(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+	public ResponseEntity<Task> create(@RequestParam(value = "owner", defaultValue = "0") Integer ownerId, @RequestBody Task task) {
+		Task newObj = service.create(ownerId, task);
+		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("tasks/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
-		
 	}
 	
 	@PutMapping (value = "/{id}")
-	public ResponseEntity<OwnerDTO> update(@PathVariable Integer id, @RequestBody OwnerDTO ownerDTO) {
-		Owner newObj = service.update(id, ownerDTO);
-		return ResponseEntity.ok().body(new OwnerDTO(newObj));	
+	public ResponseEntity<TaskDTO> update(@PathVariable Integer id, @RequestBody TaskDTO taskDTO) {
+		Task obj = service.update(id, taskDTO);
+		return ResponseEntity.ok().body(new TaskDTO(obj));	
 	}
 	
 	@DeleteMapping (value = "/{id}")
@@ -62,5 +61,4 @@ public class OwnerResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();	
 	}
-	
 }
