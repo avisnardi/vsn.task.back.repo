@@ -8,4 +8,5 @@ import br.com.vsn.tsk.domain.Task;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
+	
 }
