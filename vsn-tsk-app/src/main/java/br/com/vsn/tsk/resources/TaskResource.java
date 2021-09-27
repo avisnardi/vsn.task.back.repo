@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,14 +46,14 @@ public class TaskResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Task> create(@RequestParam(value = "owner", defaultValue = "0") Integer ownerId, @RequestBody Task task) {
+	public ResponseEntity<Task> create(@RequestParam(value = "owner", defaultValue = "0") Integer ownerId, @Valid @RequestBody Task task) {
 		Task newObj = service.create(ownerId, task);
 		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("tasks/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@PutMapping (value = "/{id}")
-	public ResponseEntity<TaskDTO> update(@PathVariable Integer id, @RequestBody TaskDTO taskDTO) {
+	public ResponseEntity<TaskDTO> update(@PathVariable Integer id, @Valid @RequestBody TaskDTO taskDTO) {
 		Task obj = service.update(id, taskDTO);
 		return ResponseEntity.ok().body(new TaskDTO(obj));	
 	}
