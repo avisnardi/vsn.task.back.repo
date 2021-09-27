@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Owner implements Serializable {
@@ -18,6 +21,8 @@ public class Owner implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@NotEmpty(message="Campo 'Nome' deve ser preenchido.")
+	@Length (min=3, max=100, message="Campo 'Nome' deve ter entre 3 e 100 caracteres.")
 	private String name;
 	
 	@OneToMany(mappedBy = "owner")

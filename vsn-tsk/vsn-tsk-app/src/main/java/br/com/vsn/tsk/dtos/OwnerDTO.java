@@ -2,6 +2,10 @@ package br.com.vsn.tsk.dtos;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import br.com.vsn.tsk.domain.Owner;
 
 public class OwnerDTO implements Serializable {
@@ -9,6 +13,9 @@ public class OwnerDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	
+	@NotEmpty(message="Campo 'Nome' deve ser preenchido.")
+	@Length (min=3, max=100, message="Campo 'Nome' deve ter entre 3 e 100 caracteres.")
 	private String name;
 	
 	
