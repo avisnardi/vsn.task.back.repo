@@ -1,10 +1,17 @@
 package br.com.vsn.tsk.dtos;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import br.com.vsn.tsk.domain.Task;
 
 public class TaskDTO {
 
 	private Integer id;
+	
+	@NotEmpty(message="Campo 'Nome' deve ser preenchido.")
+	@Length (min=3, max=100, message="Campo 'Nome' deve ter entre 3 e 100 caracteres.")
 	private String name;
 	
 	public TaskDTO() {
