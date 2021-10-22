@@ -18,6 +18,9 @@ public class OwnerDTO implements Serializable {
 	@Length (min=3, max=100, message="Campo 'Nome' deve ter entre 3 e 100 caracteres.")
 	private String name;
 	
+	@NotEmpty(message="Campo 'E-mail' deve ser preenchido.")
+	@Length (min=3, max=200, message="Campo 'E-mail' deve ter entre 3 e 200 caracteres.")
+	private String email;
 	
 	public OwnerDTO() {
 		super();
@@ -29,7 +32,8 @@ public class OwnerDTO implements Serializable {
 		super();
 		this.id = obj.getId();
 		this.name = obj.getName();
-	}
+		this.email = obj.getEmail();
+		}
 
 
 	public Integer getId() {
@@ -49,6 +53,16 @@ public class OwnerDTO implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

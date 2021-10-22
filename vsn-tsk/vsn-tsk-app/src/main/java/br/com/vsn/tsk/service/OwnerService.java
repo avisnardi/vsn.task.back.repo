@@ -37,6 +37,7 @@ public class OwnerService {
 	public Owner update(Integer id, OwnerDTO ownerDTO) {
 		Owner obj = findById(id);
 		obj.setName(ownerDTO.getName());
+		obj.setEmail(ownerDTO.getEmail());
 		return repository.save(obj);
 	}
 

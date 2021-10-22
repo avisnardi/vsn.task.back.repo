@@ -20,10 +20,11 @@ public class DBService {
 	private TaskRepository taskRepository;
 	
 	public void instanciaBaseDeDados() {
-		Owner o1 = new Owner(null, "Alexandre Visnardi");
-		Owner o2 = new Owner(null, "Kelly Cristina dos Santos Visnardi");
+		System.out.println("instanciaBaseDeDados #########################################");
+		Owner o1 = new Owner(null, "Alexandre Visnardi", "avisnardi@gmail.com");
+		Owner o2 = new Owner(null, "Kelly Cristina dos Santos Visnardi", "kel.cris@gmail.com");
 
-		Owner o3 = new Owner(null, "Jacinto Silva");
+		Owner o3 = new Owner(null, "Jacinto Silva", "jacinto.s@gmail.com");
 
 		Task t1 = new Task(null, "Task 01", o1);
 
